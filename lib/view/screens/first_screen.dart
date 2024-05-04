@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import '../../controller/home_controller.dart';
 
 class FirstScreen extends StatelessWidget {
-  const FirstScreen({super.key});
+  FirstScreen({super.key});
+
+  final HomeController homeController = Get.put(HomeController(), permanent: true);
 
   @override
   Widget build(BuildContext context) {
@@ -16,41 +18,28 @@ class FirstScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          GetX<HomeController>(
-            init: HomeController(),
+          GetBuilder<HomeController>(
             builder: (controller) {
-              return Column(
-                children: [
-                  Text(
-                    controller.index.value.toString(),
-                    style: Theme.of(context).textTheme.headlineMedium,
-                    textAlign: TextAlign.center,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: MaterialButton(
-                      textColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      color: Colors.red,
-                      onPressed: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => const FirstScreen(),
-                        //   ),
-                        // );
-                        // Get.to(const FirstScreen(), transition: Transition.leftToRight);
-                        //Get.toNamed('/firstPage');
-                        controller.increaseIndex();
-                      },
-                      child: const Text('First Screen'),
-                    ),
-                  ),
-                ],
+              return Text(
+                controller.name,
+                style: Theme.of(context).textTheme.headlineMedium,
+                textAlign: TextAlign.center,
               );
             },
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: MaterialButton(
+              textColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              color: Colors.red,
+              onPressed: () {
+                homeController.displayName();
+              },
+              child: const Text('Display Name'),
+            ),
           ),
         ],
       ),

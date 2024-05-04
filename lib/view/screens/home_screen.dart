@@ -21,14 +21,6 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home Screen'),
         centerTitle: true,
-        actions: [
-          TextButton(
-            onPressed: () {
-              Get.to(const FirstScreen(), transition: Transition.leftToRight);
-            },
-            child: const Text('NEXT'),
-          ),
-        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -51,15 +43,10 @@ class HomeScreen extends StatelessWidget {
                     ),
                     color: Colors.red,
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => const FirstScreen(),
-                      //   ),
-                      // );
-                      // Get.to(const FirstScreen(), transition: Transition.leftToRight);
-                      //Get.toNamed('/firstPage');
-                      homeController.increaseIndex();
+                      Get.to(
+                        () => FirstScreen(),
+                        transition: Transition.leftToRight,
+                      );
                     },
                     child: const Text('First Screen'),
                   ),
