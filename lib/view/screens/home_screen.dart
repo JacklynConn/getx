@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx/view/screens/second_screen.dart';
 import '/controller/home_controller.dart';
 import 'first_screen.dart';
 
@@ -44,11 +45,28 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.red,
                     onPressed: () {
                       Get.to(
-                        () => FirstScreen(),
+                            () => FirstScreen(),
                         transition: Transition.leftToRight,
                       );
                     },
                     child: const Text('First Screen'),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: MaterialButton(
+                    textColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    color: Colors.red,
+                    onPressed: () {
+                      Get.to(
+                            () => SecondScreen(),
+                        transition: Transition.leftToRight,
+                      );
+                    },
+                    child: const Text('Second Screen'),
                   ),
                 ),
               ],
